@@ -9,17 +9,14 @@ import ui.ConsoleUI;
 
 import java.io.*;
 
-import java.nio.file.Files;
+
 import java.nio.file.Path;
 
 import java.util.HashSet;
-import java.util.Scanner;
+
 
 
 public class Main {
-
-    private static Path libraryFile = Path.of("Library.txt");
-    private static HashSet<String> uniqueLibrary = new HashSet<>();
 
     public static void main(String[] args) {
 
@@ -173,3 +170,5 @@ public class Main {
 
 
 }
+
+

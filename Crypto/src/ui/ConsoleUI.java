@@ -1,18 +1,12 @@
 package ui;
 
-import exeptions.CryptographyException;
-import main.Main;
-import model.Cryptographer;
+
 import model.FileUtile;
 
-import javax.sound.midi.Soundbank;
-import javax.swing.*;
-import java.io.*;
-import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+
 
 public class ConsoleUI {
     public static final String EXIT_CHAR = "q";
@@ -64,6 +58,6 @@ public class ConsoleUI {
         System.out.println("Select 2 decode with brute force!");
         System.out.println("Select 3 for exit to main menu");
     }
-
-
 }
+
+

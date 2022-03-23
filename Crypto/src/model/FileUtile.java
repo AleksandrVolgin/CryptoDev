@@ -1,6 +1,6 @@
 package model;
 
-import main.Main;
+
 
 import java.io.*;
 import java.nio.file.Files;
@@ -50,7 +50,5 @@ public class FileUtile {
         }
 
     }
-
-
-
 }
+
