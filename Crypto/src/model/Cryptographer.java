@@ -2,6 +2,9 @@ package model;
 
 import exeptions.CryptographyException;
 
+import java.util.HashSet;
+
+
 public class Cryptographer {
 
     private String originalText;
@@ -9,13 +12,6 @@ public class Cryptographer {
     private int key = 0;
 
     public Cryptographer() {
-
-    }
-
-    public Cryptographer(String originalText, int key) {
-
-        this.originalText = originalText.toLowerCase();
-        this.key = key;
 
     }
 
@@ -52,18 +48,54 @@ public class Cryptographer {
 
     }
 
+    public int findKeyForDecodeWithBruteForce(String encryptText) {
+
+        Cryptographer decoder = new Cryptographer();
+        decoder.setOriginalText(encryptText);
+        int maxMatch = 0;
+        int maxMatchesKey = 1;
+
+        for (int i = 1; i < Library.ALPHABET_SIZE; i++) {
+
+            int count = 0;
+
+            decoder.setPrivateKey(i);
+            decoder.decode();
+
+            for (String line: Library.getUniqueLibrary()) {
+                count += countInner(decoder.getEncryptText(), line);
+            }
+
+            System.out.println("Key " + i + " find " + count + " matches");
+
+            if (count > maxMatch) {
+                maxMatch = count;
+                maxMatchesKey = i;
+            }
+
+        }
+
+        System.out.println("Best of the best " + maxMatchesKey);
+        return maxMatchesKey;
+    }
+
+    public static int countInner(String str, String target) {
+        return (str.length() - str.replace(target, "").length()) / target.length();
+    }
+
     private void checkParam() {
         if (originalText.isBlank()) {
-            throw new CryptographyException("the original text is blank!");
+            throw new CryptographyException("Original text is blank!");
 
         }
         if (key == 0) {
-            throw new CryptographyException("the key is empty");
+            throw new CryptographyException("Key is empty");
 
         }
     }
 
     public void setOriginalText(String originalText) {
+
         this.originalText = originalText;
     }
 
@@ -74,8 +106,6 @@ public class Cryptographer {
         if(key >= Library.ALPHABET_SIZE) {
             throw new CryptographyException("Key is too big!");
         }
-
-
 
         this.key = key;
     }
@@ -88,20 +118,19 @@ public class Cryptographer {
         this.encryptedText = encryptedText;
     }
 
-
     private int normalizationKey(int key, int index, int charSetSize, boolean decode) {
-
+        charSetSize = charSetSize-1;
         if (decode) {
-            if ((index + key) > charSetSize) {
-                return (index + key - charSetSize);
-            } else {
-                return index + key;
-            }
-        } else {
             if ((index - key) < 0) {
                 return (charSetSize + (index - key));
             } else {
                 return index - key;
+            }
+        } else {
+            if ((index + key) > charSetSize) {
+                return (index + key - charSetSize);
+            } else {
+                return index + key;
             }
         }
     }
