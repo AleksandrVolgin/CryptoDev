@@ -28,7 +28,7 @@ public class Main {
 
     public static void initialStartMenu(ConsoleReader scanner) {
 
-        System.out.println("Follow next step's or press " + ConsoleUI.EXIT_CHAR + " end ENTER to Exit!");
+        System.out.println("Follow next step's or press - " + ConsoleUI.EXIT_CHAR + " end ENTER to Exit!");
 
         Path sourceFile = ConsoleUI.initialFilePath(scanner, "1. Please, select source file:");
 

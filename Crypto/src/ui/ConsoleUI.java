@@ -16,7 +16,7 @@ public class ConsoleUI {
         Path curPath = Paths.get(scanner.readFromConsole());
         if (!Files.exists(curPath)) {
             FileUtile.createNewFile(curPath);
-            System.out.println("File not found, " + curPath + "was created!");
+            System.out.println("File not found, " + curPath + " was created!");
         }
 
         return curPath;

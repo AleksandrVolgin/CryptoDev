@@ -12,7 +12,7 @@ public class CryptographyException extends RuntimeException {
 
     public void showErrorMessage() {
         System.out.println();
-        System.out.println("Exception: " + errMessage);
+        System.out.println("Exception - " + errMessage);
     }
 
 }

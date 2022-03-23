@@ -65,7 +65,7 @@ public class Cryptographer {
                 count += countInner(decoder.getEncryptText(), line);
             }
 
-            System.out.println("Key " + i + " find " + count + " matches");
+            System.out.println("Key: " + i + " find " + count + " matches");
 
             if (count > maxMatch) {
                 maxMatch = count;

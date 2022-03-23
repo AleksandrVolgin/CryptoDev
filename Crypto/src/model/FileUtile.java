@@ -31,7 +31,7 @@ public class FileUtile {
             bufferedWriter.write(text);
             bufferedWriter.close();
         } catch (IOException e) {
-            System.out.println("Could't save the file:" + path.toString());
+            System.out.println("Could't save the file: " + path.toString());
             return false;
         }
         return true;
@@ -45,7 +45,7 @@ public class FileUtile {
             try {
                 Files.createFile(path);
             } catch (IOException e) {
-                System.out.println("Could't create new file:" + path.toString());
+                System.out.println("Could't create new file: " + path.toString());
             }
         }
 

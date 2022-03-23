@@ -28,7 +28,7 @@ public class Library {
                 return i;
             }
         }
-        throw new CryptographyException("wrong symbol in text:" + c);
+        throw new CryptographyException("wrong symbol in text: " + c);
     }
 
     public char getCharFromLibrary(int index) {
